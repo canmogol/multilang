@@ -1,0 +1,145 @@
+http://localhost:8080/multilang/api/greeter/sayHi/john
+
+
+First Response
+=================
+Hello Python john
+PI 0
+Hi Ruby john
+RI 1
+Hi Groovy john
+GI 66
+Hi Groovy john
+GC 0
+Hi Scala john
+SC 88
+Hi Java john
+JC 0
+
+
+
+First Output
+=================
+11:15:02,860 INFO  [stdout] (default task-1) RUBY_INTERPRETED time consumed: 3075
+11:15:03,191 INFO  [stdout] (default task-1) GROOVY_COMPILED time consumed: 322
+11:15:03,195 INFO  [stdout] (default task-1) JAVA_COMPILED time consumed: 0
+11:15:07,340 INFO  [stdout] (default task-1) PYTHON_INTERPRETED time consumed: 4142
+11:15:07,344 INFO  [stdout] (default task-1) SCALA_COMPILED time consumed: 2
+11:15:07,902 INFO  [stdout] (default task-1) GROOVY_INTERPRETED time consumed: 555
+
+
+
+
+
+Rest of the Responses
+=====================
+Hello Python john 
+PI 0
+Hi Ruby john
+RI 0
+Hi Groovy john
+GI 0
+Hi Groovy john
+GC 0
+Hi Scala john
+SC 0
+Hi Java john
+JC 0
+
+
+
+Rest of the Outputs
+=====================
+11:15:17,904 INFO  [stdout] (default task-2) RUBY_INTERPRETED time consumed: 7
+11:15:17,907 INFO  [stdout] (default task-2) GROOVY_COMPILED time consumed: 0
+11:15:17,909 INFO  [stdout] (default task-2) JAVA_COMPILED time consumed: 0
+11:15:17,915 INFO  [stdout] (default task-2) PYTHON_INTERPRETED time consumed: 4
+11:15:17,917 INFO  [stdout] (default task-2) SCALA_COMPILED time consumed: 0
+11:15:17,948 INFO  [stdout] (default task-2) GROOVY_INTERPRETED time consumed: 29
+
+
+11:16:17,244 INFO  [stdout] (default task-3) RUBY_INTERPRETED time consumed: 6
+11:16:17,246 INFO  [stdout] (default task-3) GROOVY_COMPILED time consumed: 0
+11:16:17,247 INFO  [stdout] (default task-3) JAVA_COMPILED time consumed: 0
+11:16:17,255 INFO  [stdout] (default task-3) PYTHON_INTERPRETED time consumed: 5
+11:16:17,257 INFO  [stdout] (default task-3) SCALA_COMPILED time consumed: 0
+11:16:17,280 INFO  [stdout] (default task-3) GROOVY_INTERPRETED time consumed: 22
+11:16:23,918 INFO  [stdout] (default task-4) RUBY_INTERPRETED time consumed: 2
+11:16:23,919 INFO  [stdout] (default task-4) GROOVY_COMPILED time consumed: 0
+11:16:23,921 INFO  [stdout] (default task-4) JAVA_COMPILED time consumed: 0
+11:16:23,925 INFO  [stdout] (default task-4) PYTHON_INTERPRETED time consumed: 3
+11:16:23,927 INFO  [stdout] (default task-4) SCALA_COMPILED time consumed: 0
+11:16:23,949 INFO  [stdout] (default task-4) GROOVY_INTERPRETED time consumed: 21
+11:16:25,322 INFO  [stdout] (default task-5) RUBY_INTERPRETED time consumed: 2
+11:16:25,324 INFO  [stdout] (default task-5) GROOVY_COMPILED time consumed: 0
+11:16:25,325 INFO  [stdout] (default task-5) JAVA_COMPILED time consumed: 0
+11:16:25,328 INFO  [stdout] (default task-5) PYTHON_INTERPRETED time consumed: 2
+11:16:25,330 INFO  [stdout] (default task-5) SCALA_COMPILED time consumed: 0
+11:16:25,345 INFO  [stdout] (default task-5) GROOVY_INTERPRETED time consumed: 14
+11:16:30,649 INFO  [stdout] (default task-6) RUBY_INTERPRETED time consumed: 2
+11:16:30,651 INFO  [stdout] (default task-6) GROOVY_COMPILED time consumed: 0
+11:16:30,652 INFO  [stdout] (default task-6) JAVA_COMPILED time consumed: 0
+11:16:30,655 INFO  [stdout] (default task-6) PYTHON_INTERPRETED time consumed: 2
+11:16:30,656 INFO  [stdout] (default task-6) SCALA_COMPILED time consumed: 0
+11:16:30,673 INFO  [stdout] (default task-6) GROOVY_INTERPRETED time consumed: 16
+11:16:32,514 INFO  [stdout] (default task-7) RUBY_INTERPRETED time consumed: 2
+11:16:32,516 INFO  [stdout] (default task-7) GROOVY_COMPILED time consumed: 0
+11:16:32,517 INFO  [stdout] (default task-7) JAVA_COMPILED time consumed: 0
+11:16:32,520 INFO  [stdout] (default task-7) PYTHON_INTERPRETED time consumed: 3
+11:16:32,521 INFO  [stdout] (default task-7) SCALA_COMPILED time consumed: 0
+11:16:32,541 INFO  [stdout] (default task-7) GROOVY_INTERPRETED time consumed: 19
+11:16:33,463 INFO  [stdout] (default task-8) RUBY_INTERPRETED time consumed: 1
+11:16:33,465 INFO  [stdout] (default task-8) GROOVY_COMPILED time consumed: 0
+11:16:33,467 INFO  [stdout] (default task-8) JAVA_COMPILED time consumed: 0
+11:16:33,471 INFO  [stdout] (default task-8) PYTHON_INTERPRETED time consumed: 2
+11:16:33,473 INFO  [stdout] (default task-8) SCALA_COMPILED time consumed: 0
+11:16:33,490 INFO  [stdout] (default task-8) GROOVY_INTERPRETED time consumed: 16
+11:16:34,814 INFO  [stdout] (default task-9) RUBY_INTERPRETED time consumed: 4
+11:16:34,816 INFO  [stdout] (default task-9) GROOVY_COMPILED time consumed: 0
+11:16:34,817 INFO  [stdout] (default task-9) JAVA_COMPILED time consumed: 0
+11:16:34,853 INFO  [stdout] (default task-9) PYTHON_INTERPRETED time consumed: 34
+11:16:34,857 INFO  [stdout] (default task-9) SCALA_COMPILED time consumed: 0
+11:16:34,874 INFO  [stdout] (default task-9) GROOVY_INTERPRETED time consumed: 16
+11:16:36,932 INFO  [stdout] (default task-10) RUBY_INTERPRETED time consumed: 2
+11:16:36,933 INFO  [stdout] (default task-10) GROOVY_COMPILED time consumed: 0
+11:16:36,934 INFO  [stdout] (default task-10) JAVA_COMPILED time consumed: 0
+11:16:36,938 INFO  [stdout] (default task-10) PYTHON_INTERPRETED time consumed: 2
+11:16:36,939 INFO  [stdout] (default task-10) SCALA_COMPILED time consumed: 0
+11:16:36,957 INFO  [stdout] (default task-10) GROOVY_INTERPRETED time consumed: 16
+11:16:38,307 INFO  [stdout] (default task-11) RUBY_INTERPRETED time consumed: 2
+11:16:38,309 INFO  [stdout] (default task-11) GROOVY_COMPILED time consumed: 0
+11:16:38,310 INFO  [stdout] (default task-11) JAVA_COMPILED time consumed: 1
+11:16:38,313 INFO  [stdout] (default task-11) PYTHON_INTERPRETED time consumed: 2
+11:16:38,314 INFO  [stdout] (default task-11) SCALA_COMPILED time consumed: 0
+11:16:38,327 INFO  [stdout] (default task-11) GROOVY_INTERPRETED time consumed: 12
+11:16:39,677 INFO  [stdout] (default task-12) RUBY_INTERPRETED time consumed: 2
+11:16:39,678 INFO  [stdout] (default task-12) GROOVY_COMPILED time consumed: 0
+11:16:39,679 INFO  [stdout] (default task-12) JAVA_COMPILED time consumed: 0
+11:16:39,682 INFO  [stdout] (default task-12) PYTHON_INTERPRETED time consumed: 2
+11:16:39,683 INFO  [stdout] (default task-12) SCALA_COMPILED time consumed: 0
+11:16:39,697 INFO  [stdout] (default task-12) GROOVY_INTERPRETED time consumed: 13
+11:16:43,389 INFO  [stdout] (default task-13) RUBY_INTERPRETED time consumed: 2
+11:16:43,390 INFO  [stdout] (default task-13) GROOVY_COMPILED time consumed: 0
+11:16:43,391 INFO  [stdout] (default task-13) JAVA_COMPILED time consumed: 0
+11:16:43,394 INFO  [stdout] (default task-13) PYTHON_INTERPRETED time consumed: 3
+11:16:43,395 INFO  [stdout] (default task-13) SCALA_COMPILED time consumed: 0
+11:16:43,408 INFO  [stdout] (default task-13) GROOVY_INTERPRETED time consumed: 12
+11:16:49,508 INFO  [stdout] (default task-14) RUBY_INTERPRETED time consumed: 1
+11:16:49,510 INFO  [stdout] (default task-14) GROOVY_COMPILED time consumed: 0
+11:16:49,511 INFO  [stdout] (default task-14) JAVA_COMPILED time consumed: 0
+11:16:49,514 INFO  [stdout] (default task-14) PYTHON_INTERPRETED time consumed: 2
+11:16:49,515 INFO  [stdout] (default task-14) SCALA_COMPILED time consumed: 0
+11:16:49,528 INFO  [stdout] (default task-14) GROOVY_INTERPRETED time consumed: 12
+11:16:51,068 INFO  [stdout] (default task-15) RUBY_INTERPRETED time consumed: 2
+11:16:51,070 INFO  [stdout] (default task-15) GROOVY_COMPILED time consumed: 0
+11:16:51,071 INFO  [stdout] (default task-15) JAVA_COMPILED time consumed: 0
+11:16:51,074 INFO  [stdout] (default task-15) PYTHON_INTERPRETED time consumed: 2
+11:16:51,076 INFO  [stdout] (default task-15) SCALA_COMPILED time consumed: 0
+11:16:51,093 INFO  [stdout] (default task-15) GROOVY_INTERPRETED time consumed: 16
+11:17:06,271 INFO  [stdout] (default task-16) RUBY_INTERPRETED time consumed: 2
+11:17:06,273 INFO  [stdout] (default task-16) GROOVY_COMPILED time consumed: 1
+11:17:06,275 INFO  [stdout] (default task-16) JAVA_COMPILED time consumed: 0
+11:17:06,279 INFO  [stdout] (default task-16) PYTHON_INTERPRETED time consumed: 2
+11:17:06,281 INFO  [stdout] (default task-16) SCALA_COMPILED time consumed: 0
+11:17:06,301 INFO  [stdout] (default task-16) GROOVY_INTERPRETED time consumed: 19
+

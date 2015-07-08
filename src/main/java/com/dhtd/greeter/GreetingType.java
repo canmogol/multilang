@@ -1,0 +1,6 @@
+package com.dhtd.greeter;
+
+
+public enum GreetingType {
+    PYTHON_INTERPRETED, RUBY_INTERPRETED, GROOVY_INTERPRETED, GROOVY_COMPILED, SCALA_COMPILED, JAVA_COMPILED
+}
