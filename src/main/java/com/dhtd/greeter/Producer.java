@@ -6,6 +6,7 @@ import org.jruby.embed.ScriptingContainer;
 import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
 import java.io.InputStream;
@@ -14,9 +15,18 @@ import java.util.Scanner;
 @Stateless
 public class Producer {
 
+    @EJB(beanName = "GreeterServiceEngineJava")
+    private GreeterServiceEngine greeterServiceEngineJava;
+
+    @EJB(beanName = "GreeterServiceEngineGroovy")
+    private GreeterServiceEngine greeterServiceEngineGroovy;
+
+    @EJB(beanName = "GreeterServiceEngineScala")
+    private GreeterServiceEngine greeterServiceEngineScala;
+
     @Produces
     @Greetings(GreetingType.PYTHON_INTERPRETED)
-    public GreeterServiceEngine getGreeterServiceEnginePytonInterpreted() {
+    public GreeterServiceEngine getGreeterServiceEnginePythonInterpreted() {
         long time = System.currentTimeMillis();
 
         PythonInterpreter interpreter = new PythonInterpreter();
@@ -112,6 +122,33 @@ public class Producer {
         }
 
         System.out.println("JAVA_COMPILED time consumed: " + (System.currentTimeMillis() - time));
+        return greeterServiceEngine;
+    }
+
+    @Produces
+    @Greetings(GreetingType.JAVA_INJECTED)
+    public GreeterServiceEngine getGreeterServiceEngineJavaInjected() {
+        long time = System.currentTimeMillis();
+        GreeterServiceEngine greeterServiceEngine = greeterServiceEngineJava;
+        System.out.println("JAVA_INJECTED time consumed: " + (System.currentTimeMillis() - time));
+        return greeterServiceEngine;
+    }
+
+    @Produces
+    @Greetings(GreetingType.GROOVY_INJECTED)
+    public GreeterServiceEngine getGreeterServiceEngineGroovyInjected() {
+        long time = System.currentTimeMillis();
+        GreeterServiceEngine greeterServiceEngine = greeterServiceEngineGroovy;
+        System.out.println("GROOVY_INJECTED time consumed: " + (System.currentTimeMillis() - time));
+        return greeterServiceEngine;
+    }
+
+    @Produces
+    @Greetings(GreetingType.SCALA_INJECTED)
+    public GreeterServiceEngine getGreeterServiceEngineScalaInjected() {
+        long time = System.currentTimeMillis();
+        GreeterServiceEngine greeterServiceEngine = greeterServiceEngineScala;
+        System.out.println("SCALA_INJECTED time consumed: " + (System.currentTimeMillis() - time));
         return greeterServiceEngine;
     }
 

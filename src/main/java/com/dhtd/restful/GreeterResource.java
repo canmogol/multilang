@@ -36,6 +36,18 @@ public class GreeterResource {
     @Greetings(GreetingType.JAVA_COMPILED)
     GreeterServiceEngine greeterServiceEngineJavaCompiled;
 
+    @Inject
+    @Greetings(GreetingType.JAVA_INJECTED)
+    GreeterServiceEngine greeterServiceEngineJavaInjected;
+
+    @Inject
+    @Greetings(GreetingType.GROOVY_INJECTED)
+    GreeterServiceEngine greeterServiceEngineGroovyInjected;
+
+    @Inject
+    @Greetings(GreetingType.SCALA_INJECTED)
+    GreeterServiceEngine greeterServiceEngineScalaInjected;
+
 
     @GET
     @Path("/sayHi/{name}")
@@ -70,6 +82,21 @@ public class GreeterResource {
         hi.append("\n\n");
         hi.append(greeterServiceEngineJavaCompiled != null ? greeterServiceEngineJavaCompiled.sayHi(name) : "");
         hi.append("\nJC ");
+        hi.append(System.currentTimeMillis() - time);
+        time = System.currentTimeMillis();
+        hi.append("\n\n");
+        hi.append(greeterServiceEngineJavaInjected != null ? greeterServiceEngineJavaInjected.sayHi(name) : "");
+        hi.append("\nJI ");
+        hi.append(System.currentTimeMillis() - time);
+        time = System.currentTimeMillis();
+        hi.append("\n\n");
+        hi.append(greeterServiceEngineGroovyInjected != null ? greeterServiceEngineGroovyInjected.sayHi(name) : "");
+        hi.append("\nGI ");
+        hi.append(System.currentTimeMillis() - time);
+        time = System.currentTimeMillis();
+        hi.append("\n\n");
+        hi.append(greeterServiceEngineScalaInjected != null ? greeterServiceEngineScalaInjected.sayHi(name) : "");
+        hi.append("\nSI ");
         hi.append(System.currentTimeMillis() - time);
         hi.append("\n\n");
         return hi.toString();
