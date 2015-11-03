@@ -16,7 +16,7 @@ public class Producer {
 
     @Produces
     @Greetings(GreetingType.PYTHON_INTERPRETED)
-    public GreeterServiceEngine getGreeterServiceEnginePytonInterpreted() {
+    public GreeterServiceEngine getGreeterServiceEnginePythonInterpreted() {
         long time = System.currentTimeMillis();
 
         PythonInterpreter interpreter = new PythonInterpreter();
