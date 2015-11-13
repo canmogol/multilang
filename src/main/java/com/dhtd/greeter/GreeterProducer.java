@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 @Stateless
-public class Producer {
+public class GreeterProducer {
 
     @EJB(beanName = "GreeterServiceEngineJava")
     private GreeterServiceEngine greeterServiceEngineJava;

@@ -1,8 +1,16 @@
 package com.dhtd.restful;
 
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
 @ApplicationPath("/api")
-public class APIPoint extends Application {
+public class APIPoint extends BaseApplication {
+
+    public APIPoint() {
+        addResource(GreeterResource.class);
+        addResource(ScalaResource.class);
+        addResource(GroovyResource.class);
+        addRubyResource(RubyResource.class);
+        addPythonResource(PythonResource.class);
+    }
+
 }
