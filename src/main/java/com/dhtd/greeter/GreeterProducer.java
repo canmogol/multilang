@@ -10,6 +10,10 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -25,6 +29,25 @@ public class GreeterProducer {
 
     @EJB(beanName = "GreeterServiceEngineScala")
     private GreeterServiceEngine greeterServiceEngineScala;
+
+    @Produces
+    @Greetings(GreetingType.JAVASCRIPT_INTERPRETED)
+    public GreeterServiceEngine getGreeterServiceEngineJavascriptInterpreted() throws ScriptException, NoSuchMethodException {
+        long time = System.currentTimeMillis();
+
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("GreeterServiceEngineJS.js");
+        Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
+        String content = scanner.next();
+
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+        engine.eval(content);
+        Invocable invocable = (Invocable) engine;
+        Object result = invocable.invokeFunction("instance");
+        GreeterServiceEngine greeterServiceEngine = (GreeterServiceEngine) result;
+
+        System.out.println("JAVASCRIPT_INTERPRETED time consumed: " + (System.currentTimeMillis() - time));
+        return greeterServiceEngine;
+    }
 
     @Produces
     @Greetings(GreetingType.PYTHON_INTERPRETED)
