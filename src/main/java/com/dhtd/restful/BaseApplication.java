@@ -7,6 +7,7 @@ import org.python.util.PythonInterpreter;
 import javax.ws.rs.core.Application;
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -55,6 +56,17 @@ public class BaseApplication extends Application {
 
     private PythonInterpreter getPythonInterpreter() {
         if (interpreter == null) {
+            Properties props = new Properties();
+            props.put("python.home","path to the Lib folder");
+            props.put("python.console.encoding", "UTF-8"); // Used to prevent: console: Failed to install '': java.nio.charset.UnsupportedCharsetException: cp0.
+            props.put("python.security.respectJavaAccessibility", "false"); //don't respect java accessibility, so that we can access protected members on subclasses
+            props.put("python.import.site","false");
+
+            Properties preprops = System.getProperties();
+
+            PythonInterpreter.initialize(preprops, props, new String[0]);
+            PythonInterpreter interp = new PythonInterpreter();
+
             interpreter = new PythonInterpreter();
         }
         return interpreter;

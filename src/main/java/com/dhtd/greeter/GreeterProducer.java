@@ -7,12 +7,14 @@ import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
 import java.io.InputStream;
 import java.util.Scanner;
 
 @Stateless
+@LocalBean
 public class GreeterProducer {
 
     @EJB(beanName = "GreeterServiceEngineJava")
