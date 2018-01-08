@@ -11,6 +11,7 @@ public class APIPoint extends BaseApplication {
         addResource(GroovyResource.class);
         addRubyResource(RubyResource.class);
         addPythonResource(PythonResource.class);
+        addPhpResource(PhpResource.class);
     }
 
 }

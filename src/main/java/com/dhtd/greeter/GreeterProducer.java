@@ -1,5 +1,7 @@
 package com.dhtd.greeter;
 
+import com.caucho.quercus.QuercusEngine;
+import com.caucho.quercus.env.*;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
 import org.jruby.embed.ScriptingContainer;
@@ -14,8 +16,13 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @Stateless
 @LocalBean
@@ -62,6 +69,58 @@ public class GreeterProducer {
 
         System.out.println("PYTHON_INTERPRETED time consumed: " + (System.currentTimeMillis() - time));
         return greeterServiceEngine;
+    }
+
+    @Produces
+    @Greetings(GreetingType.PHP_INTERPRETED)
+    public GreeterServiceEngine getGreeterServiceEnginePhpInterpreted() {
+        long time = System.currentTimeMillis();
+
+        // create a hashcode for this instance
+        final int hashCode = new Random().nextInt();
+
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("GreeterServiceEnginePhp.php");
+        Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
+        String content = scanner.next();
+        String phpScript = content
+            + "\n" +
+            "return new GreeterServiceEnginePhp();";
+        try {
+            QuercusEngine quercusEngine = new QuercusEngine();
+            Value phpResourceValue = quercusEngine.execute(phpScript);
+            final Env currentEnv = Env.getCurrent();
+            ObjectExtValue objectExtValue = (ObjectExtValue) phpResourceValue.toJavaObject();
+            // create a proxy object to handle method invocations
+            GreeterServiceEngine greeterServiceEngine = (GreeterServiceEngine) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{GreeterServiceEngine.class}, (proxy, method, args) -> {
+                // if this is a
+                if ("sayHi".equals(method.getName())) {
+                    // get method name
+                    StringValue stringValueMethod = new StringBuilderValue(method.getName());
+                    // get method arguments
+                    Value[] values = Arrays.asList(args)
+                        .stream()
+                        .map(StringValue::create)
+                        .collect(Collectors.toList())
+                        .toArray(new Value[args.length]);
+                    // call method
+                    Value responseValue = objectExtValue.callMethod(currentEnv, stringValueMethod, values);
+                    // return value as java object
+                    return responseValue.toJavaObject();
+                } else if ("hashCode".equals(method.getName())) {
+                    return hashCode;
+                } else {
+                    // delegate method call
+                    return method.invoke(proxy, args);
+                }
+            });
+
+            System.out.println("PHP_INTERPRETED time consumed: " + (System.currentTimeMillis() - time));
+            return greeterServiceEngine;
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Produces

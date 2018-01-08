@@ -25,6 +25,10 @@ public class GreeterResource {
     GreeterServiceEngine greeterServiceEngineRuby;
 
     @Inject
+    @Greetings(GreetingType.PHP_INTERPRETED)
+    GreeterServiceEngine greeterServiceEnginePhp;
+
+    @Inject
     @Greetings(GreetingType.GROOVY_INTERPRETED)
     GreeterServiceEngine greeterServiceEngineGroovyInterpreted;
 
@@ -71,6 +75,11 @@ public class GreeterResource {
         hi.append("\n\n");
         hi.append(greeterServiceEngineRuby != null ? greeterServiceEngineRuby.sayHi(name) : "");
         hi.append("\nRUBY_INTERPRETED       ");
+        hi.append(System.currentTimeMillis() - time);
+        time = System.currentTimeMillis();
+        hi.append("\n\n");
+        hi.append(greeterServiceEnginePhp != null ? greeterServiceEnginePhp.sayHi(name) : "");
+        hi.append("\nPHP_INTERPRETED       ");
         hi.append(System.currentTimeMillis() - time);
         time = System.currentTimeMillis();
         hi.append("\n\n");
