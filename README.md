@@ -7,5 +7,6 @@ Restful web service paths for example http://localhost:8080/multilang/api/
 - scala/sayHi/john
 - groovy/sayHi/john
 - python/sayHi/john
+- php/sayHi/john
 - ruby/sayHi/john
 
